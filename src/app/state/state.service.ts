@@ -19,11 +19,11 @@ export class StateService {
     this.posts$.next(posts);
   }
 
-  getUpdatedPost() {
+  getAddedPost() {
     this.post$.asObservable;
   }
 
-  setUpdatedPost(post: Post) {
+  setAddedPost(post: Post) {
     this.post$.next(post);
   }
 }
