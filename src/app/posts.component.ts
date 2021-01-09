@@ -8,6 +8,7 @@ import { Post } from "./models/post";
   template: `
     <h1>Hello {{ name }}!</h1>
     <div class="post" *ngFor="let post of posts">
+      <div class="title">{{ post.userId }} - {{ post.title }}</div>
       {{ post.body }}
     </div>
   `,
@@ -15,6 +16,9 @@ import { Post } from "./models/post";
     `
       h1 {
         font-family: Lato;
+      }
+      .title {
+        font-weight: bold;
       }
       .post {
         padding: 5px;
