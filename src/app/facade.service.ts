@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { APIService } from "./api/api.service";
 import { Post } from "./models/post";
 import { StateService } from "./state/state.service";
@@ -10,7 +11,9 @@ export class FacadeService {
     private stateService: StateService
   ) {}
 
-  getPosts() {}
+  getPosts(): Observable<Post[]> {
+    return this.stateService.getPosts();
+  }
 
   setPosts(posts: Post[]): void {
     this.stateService.setPosts(posts);

@@ -12,7 +12,7 @@ export class StateService {
   }
 
   getPosts(): Observable<Post[]>{
-    return this.posts$;
+    return this.posts$.asObservable();
   }
 
   setPosts(posts: Post[]): void{
