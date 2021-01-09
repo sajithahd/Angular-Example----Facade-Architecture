@@ -9,6 +9,7 @@ export class StateService {
 
   constructor() {
     this.posts$ = new ReplaySubject(1);
+    this.post$ = new ReplaySubject(1);
   }
 
   getPosts$(): Observable<Post[]> {
