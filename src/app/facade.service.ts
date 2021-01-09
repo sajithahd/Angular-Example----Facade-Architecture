@@ -12,7 +12,7 @@ export class FacadeService {
   ) {}
 
   getPosts$(): Observable<Post[]> {
-    return this.stateService.getPosts();
+    return this.stateService.getPosts$();
   }
 
   setPosts(posts: Post[]): void {
@@ -31,7 +31,7 @@ export class FacadeService {
   }
 
   getAddedPost$(): Observable<Post>{
-    return this.getAddedPost$();
+    return this.stateService.getAddedPost$();
   }
 
   setAddedPost(post: Post){

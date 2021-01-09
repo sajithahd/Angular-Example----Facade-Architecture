@@ -11,7 +11,7 @@ export class StateService {
     this.posts$ = new ReplaySubject(1);
   }
 
-  getPosts(): Observable<Post[]> {
+  getPosts$(): Observable<Post[]> {
     return this.posts$.asObservable();
   }
 
@@ -19,8 +19,8 @@ export class StateService {
     this.posts$.next(posts);
   }
 
-  getAddedPost() {
-    this.post$.asObservable;
+  getAddedPost$(): Observable<Post> {
+    return this.post$.asObservable();
   }
 
   setAddedPost(post: Post) {
