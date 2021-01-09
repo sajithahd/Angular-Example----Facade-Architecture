@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, Observer } from "rxjs";
 import { APIService } from "./api/api.service";
 import { Post } from "./models/post";
 import { StateService } from "./state/state.service";
@@ -30,8 +30,12 @@ export class FacadeService {
     );
   }
 
-  getAddedPost$(){
-    this.getAddedPost$();
+  getAddedPost$(): Observable<Post>{
+    return this.getAddedPost$();
+  }
+
+  setAddedPost(post: Post){
+    this.stateService.setAddedPost(post);
   }
 
   addPost(post: Post): void {
