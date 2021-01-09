@@ -8,10 +8,11 @@ import { FacadeService } from "./facade.service";
 import { StateService } from "./state/state.service";
 import { APIService } from "./api/api.service";
 import { HttpClientModule } from "@angular/common/http";
+import { AddNewPostComponent } from "./add-new-post.component";
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule],
-  declarations: [AppComponent, PostsComponent],
+  declarations: [AppComponent, PostsComponent, AddNewPostComponent],
   bootstrap: [AppComponent],
   providers: [FacadeService, StateService, APIService]
 })

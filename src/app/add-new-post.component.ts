@@ -1,4 +1,9 @@
 import { Component } from "@angular/core";
 
-@Component({})
+@Component({
+  selector: 'add-new-post',
+  template:`
+    <div>Add new Post</div>
+  `
+})
 export class AddNewPostComponent {}

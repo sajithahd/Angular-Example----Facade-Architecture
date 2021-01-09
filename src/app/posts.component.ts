@@ -6,17 +6,15 @@ import { Post } from "./models/post";
 @Component({
   selector: "posts",
   template: `
-    <h1>Hello {{ name }}!</h1>
     <div class="post" *ngFor="let post of posts">
-      <div class="title">{{ post.id }}. {{ post.title }} by user {{post.userId}}</div>
+      <div class="title">
+        {{ post.id }}. {{ post.title }} by user {{ post.userId }}
+      </div>
       {{ post.body }}
     </div>
   `,
   styles: [
     `
-      h1 {
-        font-family: Lato;
-      }
       .title {
         font-weight: bold;
       }
@@ -37,7 +35,7 @@ export class PostsComponent implements OnInit {
   constructor(private facadeService: FacadeService) {
     facadeService.loadPosts();
   }
-  
+
   ngOnInit(): void {
     this.posts$ = this.facadeService.getPosts$();
     this.posts$.subscribe(
