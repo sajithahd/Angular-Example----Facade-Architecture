@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { FacadeService } from "./facade.service";
 
 @Component({
   selector: "posts",
@@ -15,4 +16,8 @@ import { Component, Input } from "@angular/core";
 })
 export class PostsComponent {
   @Input() name: string;
+
+  constructor(private facadeService: FacadeService){
+    facadeService.getAllPosts();
+  }
 }
