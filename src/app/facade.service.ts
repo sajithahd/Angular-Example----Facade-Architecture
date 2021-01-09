@@ -1,22 +1,25 @@
 import { Injectable } from "@angular/core";
 import { APIService } from "./api/api.service";
+import { Post } from "./models/post";
 import { StateService } from "./state/state.service";
 
 @Injectable()
 export class FacadeService {
   constructor(
     private apiService: APIService,
-    private staetService: StateService
+    private stateService: StateService
   ) {}
 
   getPosts() {}
 
-  setPosts() {}
+  setPosts(posts: Post[]): void {
+    this.stateService.setPosts(posts);
+  }
 
   loadPosts() {
     this.apiService.getPosts().subscribe(
-      posts => {
-        console.log(posts);
+      (posts: Post[]) => {
+        this.setPosts(posts);
       },
       error => {
         console.log("Error occured while loading posts");
