@@ -27,4 +27,9 @@ export class APIService {
       this.httpOptions
     ) as Observable<Post>;
   }
+
+  updatePost(post: Post): Observable<Post> {
+    const url = "https://jsonplaceholder.typicode.com/posts/" + post.id;
+    return this.http.put(url, post, this.httpOptions) as Observable<Post>;
+  }
 }
