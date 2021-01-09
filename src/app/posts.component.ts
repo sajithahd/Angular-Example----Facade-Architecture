@@ -1,7 +1,7 @@
 import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: "hello",
+  selector: "posts",
   template: `
     <h1>Hello {{ name }}!</h1>
   `,
@@ -13,6 +13,6 @@ import { Component, Input } from "@angular/core";
     `
   ]
 })
-export class HelloComponent {
+export class PostsComponent {
   @Input() name: string;
 }
