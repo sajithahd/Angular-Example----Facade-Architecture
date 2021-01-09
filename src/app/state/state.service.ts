@@ -5,6 +5,7 @@ import { Post } from "../models/post";
 @Injectable()
 export class StateService {
   private posts$: ReplaySubject<Post[]>;
+  private post$: ReplaySubject<Post>;
 
   constructor() {
     this.posts$ = new ReplaySubject(1);
@@ -16,5 +17,13 @@ export class StateService {
 
   setPosts(posts: Post[]): void {
     this.posts$.next(posts);
+  }
+
+  getUpdatedPost() {
+    this.post$.asObservable;
+  }
+
+  setUpdatedPost(post: Post) {
+    this.post$.next(post);
   }
 }
