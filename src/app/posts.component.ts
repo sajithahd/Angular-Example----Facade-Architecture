@@ -1,5 +1,7 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
+import { Observable } from "rxjs";
 import { FacadeService } from "./facade.service";
+import { Post } from "./models/post";
 
 @Component({
   selector: "posts",
@@ -14,10 +16,24 @@ import { FacadeService } from "./facade.service";
     `
   ]
 })
-export class PostsComponent {
+export class PostsComponent implements OnInit {
   @Input() name: string;
 
-  constructor(private facadeService: FacadeService){
+  posts$: Observable<Post[]>;
+  posts: Post[];
+
+  constructor(private facadeService: FacadeService) {
     facadeService.loadPosts();
+  }
+  ngOnInit(): void {
+    this.posts$ = this.facadeService.getPosts();
+    this.posts$.subscribe(
+      posts => {
+        this.posts = posts;
+      },
+      error => {
+        console.log("Error occured while fetching posts");
+      }
+    );
   }
 }
