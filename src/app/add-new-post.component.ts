@@ -6,11 +6,25 @@ import { Post } from "./models/post";
   selector: "add-new-post",
   template: `
     <div>Add new Post</div>
-  `
+    <div class="post">
+      <div class="title">
+        {{ addedPost.id }}. {{ addedPost.title }} by user {{ addedPost.userId }}
+      </div>
+      {{ addedPost.body }}
+    </div>
+  `,
+  styles: [
+    `
+      .post {
+        padding: 5px;
+        background: #ddd;
+        margin: 3px;
+      }
+    `
+  ]
 })
 export class AddNewPostComponent implements OnInit {
-
-  addedPost: Post; 
+  addedPost: Post;
 
   constructor(private facadeService: FacadeService) {
     let post: Post = {
@@ -25,11 +39,10 @@ export class AddNewPostComponent implements OnInit {
 
   ngOnInit(): void {
     this.facadeService.getAddedPost$().subscribe(
-      addedPost=>{
+      addedPost => {
         this.addedPost = addedPost;
-      }, error=> {
-
-      }
+      },
+      error => {}
     );
   }
 }
