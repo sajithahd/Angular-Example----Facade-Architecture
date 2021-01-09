@@ -6,6 +6,7 @@ import { Post } from "../models/post";
 export class StateService {
   private posts$: ReplaySubject<Post[]>;
   private post$: ReplaySubject<Post>;
+  private updatedPost$: ReplaySubject<Post>;
 
   constructor() {
     this.posts$ = new ReplaySubject(1);
@@ -26,5 +27,13 @@ export class StateService {
 
   setAddedPost(post: Post) {
     this.post$.next(post);
+  }
+
+  getUpdatedPost$(): Observable<Post> {
+    return this.updatedPost$.asObservable();
+  }
+
+  setUpdatedPost(post: Post) {
+    this.updatedPost$.next(post);
   }
 }

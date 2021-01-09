@@ -48,4 +48,23 @@ export class FacadeService {
       }
     );
   }
+
+  getUpdatedPost$(): Observable<Post> {
+    return this.stateService.getUpdatedPost$();
+  }
+
+  setUpdatedPost(post: Post) {
+    this.stateService.setUpdatedPost(post);
+  }
+
+  updatePost(post: Post): void {
+    this.apiService.addPost(post).subscribe(
+      (post: Post) => {
+        this.setAddedPost(post);
+      },
+      error => {
+        console.log("Error occured while adding new post");
+      }
+    );
+  }
 }
