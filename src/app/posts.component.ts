@@ -18,6 +18,6 @@ export class PostsComponent {
   @Input() name: string;
 
   constructor(private facadeService: FacadeService){
-    facadeService.getAllPosts();
+    facadeService.loadPosts();
   }
 }

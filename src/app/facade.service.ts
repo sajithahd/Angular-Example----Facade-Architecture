@@ -13,7 +13,7 @@ export class FacadeService {
 
   setPosts() {}
 
-  getAllPosts() {
+  loadPosts() {
     this.apiService.getPosts().subscribe(
       posts => {
         console.log(posts);
