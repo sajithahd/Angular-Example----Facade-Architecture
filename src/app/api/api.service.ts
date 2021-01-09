@@ -8,7 +8,7 @@ export class APIService {
   constructor(private http: HttpClient) {}
 
   getPosts(): Observable<Post[]> {
-    this.http.get<Post[]>("") as Observable<Post[]>;
+    this.http.get<Post[]>("https://jsonplaceholder.typicode.com/posts") as Observable<Post[]>;
     return null;
   }
 }
