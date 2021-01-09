@@ -8,7 +8,7 @@ import { Post } from "./models/post";
   template: `
     <h1>Hello {{ name }}!</h1>
     <div class="post" *ngFor="let post of posts">
-      <div class="title">{{ post.userId }} - {{ post.title }}</div>
+      <div class="title">{{ post.id }}. {{ post.title }} by user {{post.userId}}</div>
       {{ post.body }}
     </div>
   `,
