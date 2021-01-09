@@ -11,7 +11,7 @@ export class FacadeService {
     private stateService: StateService
   ) {}
 
-  getPosts(): Observable<Post[]> {
+  getPosts$(): Observable<Post[]> {
     return this.stateService.getPosts();
   }
 
@@ -19,7 +19,7 @@ export class FacadeService {
     this.stateService.setPosts(posts);
   }
 
-  loadPosts() {
+  loadPosts(): void {
     this.apiService.getPosts().subscribe(
       (posts: Post[]) => {
         this.setPosts(posts);
@@ -28,5 +28,17 @@ export class FacadeService {
         console.log("Error occured while loading posts");
       }
     );
+  }
+
+  getAddedPost$(){
+    this.getAddedPost$();
+  }
+
+  addPost(post: Post): void {
+    this.apiService.addPost(post).subscribe(
+      post=>{
+        this.
+      }
+    )
   }
 }
