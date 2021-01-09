@@ -7,11 +7,19 @@ import { Post } from "./models/post";
   selector: "posts",
   template: `
     <h1>Hello {{ name }}!</h1>
+    <div class="post" *ngFor="let post of posts">
+      {{ post.body }}
+    </div>
   `,
   styles: [
     `
       h1 {
         font-family: Lato;
+      }
+      .post {
+        padding: 5px;
+        background: #ddd;
+        margin: 3px;
       }
     `
   ]
