@@ -37,6 +37,7 @@ export class PostsComponent implements OnInit {
   constructor(private facadeService: FacadeService) {
     facadeService.loadPosts();
   }
+  
   ngOnInit(): void {
     this.posts$ = this.facadeService.getPosts$();
     this.posts$.subscribe(
