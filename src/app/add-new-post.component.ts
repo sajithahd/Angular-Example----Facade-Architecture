@@ -7,7 +7,7 @@ import { Post } from "./models/post";
   template: `
     <div>Add new Post</div>
     <div class="post-capture-wrapper">
-      <div class="post-capture">
+      <div class="post-capture" *ngIf="addNew ? addedPost : updatedPost">
         <label>Post ID: </label> {{ addNew ? addedPost.id : updatedPost.id }}
         <input
           class="post-detail"
