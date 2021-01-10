@@ -93,9 +93,13 @@ import { Post } from "./models/post";
             name="userId"
             formControlName="userId"
           />
-          <div *ngIf="userId.invalid"></div>
+          <div *ngIf="userId.invalid && (userId.touched || userId.dirty)">
+            Required filed
+          </div>
         </div>
-        <div></div>
+        <div>
+          
+        </div>
         <div></div>
 
         <button type="submit" [disabled]="postForm.invalid">Add</button>
@@ -182,7 +186,7 @@ export class AddNewPostComponent implements OnInit {
     }
   }
 
-  get userId(){
-    return this.postForm.get('userId')
+  get userId() {
+    return this.postForm.get("userId");
   }
 }
