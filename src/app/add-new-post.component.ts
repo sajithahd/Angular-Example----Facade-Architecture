@@ -1,5 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators
+} from "@angular/forms";
 import { FacadeService } from "./facade.service";
 import { Post } from "./models/post";
 
@@ -166,7 +171,10 @@ export class AddNewPostComponent implements OnInit {
 
   postForm: FormGroup;
 
-  constructor(private facadeService: FacadeService) {
+  constructor(
+    private facadeService: FacadeService,
+    private formbuilder: FormBuilder
+  ) {
     this.addNew = true;
     this.post = new Post();
 
@@ -176,13 +184,20 @@ export class AddNewPostComponent implements OnInit {
     //   title: "My test post",
     //   body: "My first post regaring the facade architecture for angular."
     // } as Post;
-
     //facadeService.addPost(this.addedPost);
 
-    this.postForm = new FormGroup({
-      userId: new FormControl(this.post.userId, [Validators.required]),
-      title: new FormControl(this.post.title, [Validators.required]),
-      body: new FormControl(this.post.body, [Validators.required])
+    // New FormGroup based intialzing
+    // this.postForm = new FormGroup({
+    //   userId: new FormControl(this.post.userId, [Validators.required]),
+    //   title: new FormControl(this.post.title, [Validators.required]),
+    //   body: new FormControl(this.post.body, [Validators.required])
+    // });
+
+    //FormBuilder based intialzing
+    this.postForm = formbuilder.group({
+      userId: [this.post.userId, Validators.required],
+      title: [this.post.title, Validators.required],
+      body: [this.post.body, Validators.required]
     });
   }
 
