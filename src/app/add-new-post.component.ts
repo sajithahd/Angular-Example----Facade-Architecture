@@ -59,7 +59,7 @@ export class AddNewPostComponent implements OnInit {
     //   body: "My first post regaring the facade architecture for angular."
     // } as Post;
 
-    facadeService.addPost(this.addedPost);
+    //facadeService.addPost(this.addedPost);
   }
 
   ngOnInit(): void {
