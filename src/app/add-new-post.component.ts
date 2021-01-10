@@ -98,7 +98,10 @@ import { Post } from "./models/post";
           </div>
         </div>
         <div>
-          
+          <label for="title">Title</label>
+          <input class="post-detail" formControlName="title" id="title
+          name="title">
+          <div *ngIf="title.invalid"></div>
         </div>
         <div></div>
 
@@ -188,5 +191,13 @@ export class AddNewPostComponent implements OnInit {
 
   get userId() {
     return this.postForm.get("userId");
+  }
+
+  get title() {
+    return this.postForm.get("title");
+  }
+
+  get body() {
+    return this.postForm.get("body");
   }
 }
