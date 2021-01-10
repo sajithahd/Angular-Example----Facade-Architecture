@@ -43,12 +43,13 @@ import { Post } from "./models/post";
             <input
               class="post-detail"
               [(ngModel)]="post.title"
+              id="title"
               name="title"
               required
               #title="ngModel"
             />
             <div *ngIf="title.invalid && (title.dirty || title.touched)">
-              <span *ngIf="title.errors.reuired">Required filed</span>
+              <span *ngIf="title.errors.required">Required filed</span>
             </div>
           </div>
 
