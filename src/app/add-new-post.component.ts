@@ -217,6 +217,17 @@ export class AddNewPostComponent implements OnInit {
       },
       error => {}
     );
+
+    this.postForm.controls["title"].valueChanges
+      .pipe
+      // wait didistinct values
+      ()
+      .subscribe(
+        title => {
+          console.log(title);
+        },
+        error => {}
+      );
   }
 
   addPost(post: Post) {
