@@ -7,21 +7,21 @@ import { Post } from "./models/post";
   template: `
     <div>Add new Post</div>
     <div class="post-capture-wrapper">
-      <div class="post-capture" *ngIf="addedPost">
-        <label>Post ID: </label> {{ addedPost.id }}
-        <input class="post-detail" [(ngModel)]="addedPost.userId" />
-        <input class="post-detail" [(ngModel)]="addedPost.title" />
-        <input class="post-detail" [(ngModel)]="addedPost.body" />
+      <div class="post-capture" *ngIf="post">
+        <label>Post ID: </label> {{ post.id }}
+        <input class="post-detail" [(ngModel)]="post.userId" />
+        <input class="post-detail" [(ngModel)]="post.title" />
+        <input class="post-detail" [(ngModel)]="post.body" />
       </div>
-      <button (click)="addPost(addedPost)">
+      <button (click)="addPost(post)">
         {{ addNew ? "Add" : "Update" }}
       </button>
     </div>
     <div class="post">
       <div class="title">
-        {{ addedPost.id }}. {{ addedPost.title }} by user {{ addedPost.userId }}
+        {{ addedPost?.id }}. {{ addedPost?.title }} by user {{ addedPost?.userId }}
       </div>
-      {{ addedPost.body }}
+      {{ addedPost?.body }}
     </div>
   `,
   styles: [
@@ -45,12 +45,13 @@ import { Post } from "./models/post";
 })
 export class AddNewPostComponent implements OnInit {
   addNew: boolean;
+  post: Post;
   addedPost: Post;
   updatedPost: Post;
 
   constructor(private facadeService: FacadeService) {
     this.addNew = true;
-    this.addedPost = new Post();
+    this.post = new Post();
 
     // let post: Post = {
     //   userId: 1,
