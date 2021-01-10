@@ -44,6 +44,7 @@ import { Post } from "./models/post";
     `
   ]
 })
+
 export class AddNewPostComponent implements OnInit {
   addNew: boolean;
   addedPost: Post;
