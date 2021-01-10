@@ -66,7 +66,7 @@ export class AddNewPostComponent implements OnInit {
     this.facadeService.getAddedPost$().subscribe(
       addedPost => {
         this.addNew = true;
-        this.addedPost = addedPost;
+        //this.addedPost = addedPost;
       },
       error => {}
     );
