@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { FacadeService } from "./facade.service";
 import { Post } from "./models/post";
 
@@ -87,7 +87,7 @@ import { Post } from "./models/post";
       <form [formGroup]="postForm">
         <div>
           <label for="userId">User ID</label>
-          <input required formControlName="userId">
+          <input required formControlName="userId" />
         </div>
         <div></div>
         <div></div>
@@ -140,6 +140,12 @@ export class AddNewPostComponent implements OnInit {
     // } as Post;
 
     //facadeService.addPost(this.addedPost);
+
+    this.postForm = new FormGroup({
+      userId: new FormControl(this.post.userId, [Validators.required]),
+      title: new FormControl(this.post.title, [Validators.required]),
+      body: new FormControl(this.post.body, [Validators.required])
+    });
   }
 
   ngOnInit(): void {
