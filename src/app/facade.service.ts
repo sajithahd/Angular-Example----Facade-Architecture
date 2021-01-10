@@ -58,7 +58,7 @@ export class FacadeService {
   }
 
   updatePost(post: Post): void {
-    this.apiService.addPost(post).subscribe(
+    this.apiService.updatePost(post).subscribe(
       (post: Post) => {
         this.setUpdatedPost(post);
       },
