@@ -38,7 +38,20 @@ import { Post } from "./models/post";
             </div>
           </div>
 
-          <input class="post-detail" [(ngModel)]="post.title" name="title" />
+          <div>
+            <label for="title">Title</label>
+            <input
+              class="post-detail"
+              [(ngModel)]="post.title"
+              name="title"
+              required
+              #title="ngModel"
+            />
+            <div *ngIf="title.invalid && (title.dirty || title.touched)">
+              <span *ngIf="title.errors.reuired">Required filed</span>
+            </div>
+          </div>
+
           <input class="post-detail" [(ngModel)]="post.body" name="body" />
         </div>
 
