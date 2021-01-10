@@ -59,14 +59,14 @@ export class AddNewPostComponent implements OnInit {
   constructor(private facadeService: FacadeService) {
     this.addNew = true;
 
-    let post: Post = {
-      userId: 1,
-      id: 1,
-      title: "My test post",
-      body: "My first post regaring the facade architecture for angular."
-    } as Post;
+    // let post: Post = {
+    //   userId: 1,
+    //   id: 1,
+    //   title: "My test post",
+    //   body: "My first post regaring the facade architecture for angular."
+    // } as Post;
 
-    facadeService.addPost(post);
+    facadeService.addPost(this.addedPost);
   }
 
   ngOnInit(): void {
