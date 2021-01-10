@@ -52,8 +52,23 @@ import { Post } from "./models/post";
               <span *ngIf="title.errors.required">Required filed</span>
             </div>
           </div>
+          <div>
+            <label for="body">Body</label>
+            <input
+              class="post-detail"
+              [(ngModel)]="post.body"
+              name="body"
+              id="body"
+              #body="ngModel"
+              required
+            />
 
-          <input class="post-detail" [(ngModel)]="post.body" name="body" />
+            <div
+              *ngIf="postForm.invalid && (postForm.touched || postForm.dirty)"
+            >
+              <span *ngIf="body.errors.required"> Required Filed</span>
+            </div>
+          </div>
         </div>
 
         <button
