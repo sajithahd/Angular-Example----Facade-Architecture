@@ -19,7 +19,8 @@ import { Post } from "./models/post";
     </div>
     <div class="post">
       <div class="title">
-        {{ addedPost?.id }}. {{ addedPost?.title }} by user {{ addedPost?.userId }}
+        {{ addedPost?.id }}. {{ addedPost?.title }} by user
+        {{ addedPost?.userId }}
       </div>
       {{ addedPost?.body }}
     </div>
@@ -75,13 +76,18 @@ export class AddNewPostComponent implements OnInit {
     this.facadeService.getUpdatedPost$().subscribe(
       updatedPost => {
         this.addNew = false;
-        this.updatedPost = updatedPost;
+        this.post = updatedPost;
       },
       error => {}
     );
   }
 
   addPost(post: Post) {
-    this.facadeService.addPost(post);
+    if (post.id) {
+      this.facadeService.updatePost(post);
+    } else {
+      this.facadeService.addPost(post);
+    }
   }
+
 }
