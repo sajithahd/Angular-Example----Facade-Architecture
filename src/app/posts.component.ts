@@ -9,11 +9,11 @@ import { Post } from "./models/post";
     <div class="post" *ngFor="let post of posts">
       <div class="title">
         {{ post.id }}. {{ post.title }} by user {{ post.userId }}
-        <div>
-          <button (click)="updatePost()">Update</button>
-        </div>
       </div>
       {{ post.body }}
+      <div>
+        <button (click)="updatePost(post)">Update</button>
+      </div>
     </div>
   `,
   styles: [
