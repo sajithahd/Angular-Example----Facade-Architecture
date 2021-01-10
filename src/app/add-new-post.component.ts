@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FormGroup } from "@angular/forms";
 import { FacadeService } from "./facade.service";
 import { Post } from "./models/post";
 
@@ -83,7 +84,11 @@ import { Post } from "./models/post";
       </form> -->
 
       <!-- Reactive Form with validations -->
-      
+      <form [formGroup]="postForm">
+        <div></div>
+        <div></div>
+        <div></div>
+      </form>
     </div>
     <div class="post">
       <div class="title">
@@ -117,6 +122,8 @@ export class AddNewPostComponent implements OnInit {
   post: Post;
   addedPost: Post;
   updatedPost: Post;
+
+  postForm: FormGroup;
 
   constructor(private facadeService: FacadeService) {
     this.addNew = true;
