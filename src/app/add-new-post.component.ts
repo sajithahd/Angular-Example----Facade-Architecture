@@ -87,7 +87,13 @@ import { Post } from "./models/post";
       <form [formGroup]="postForm">
         <div>
           <label for="userId">User ID</label>
-          <input  class="post-detail" id="userId" formControlName="userId" />
+          <input
+            class="post-detail"
+            id="userId"
+            name="userId"
+            formControlName="userId"
+          />
+          <div *ngIf="userId.invalid"></div>
         </div>
         <div></div>
         <div></div>
@@ -174,5 +180,9 @@ export class AddNewPostComponent implements OnInit {
     } else {
       this.facadeService.addPost(post);
     }
+  }
+
+  get userId(){
+    return this.postForm.get('userId')
   }
 }
