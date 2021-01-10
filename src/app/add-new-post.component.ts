@@ -7,15 +7,40 @@ import { Post } from "./models/post";
   template: `
     <div>Add new Post</div>
     <div class="post-capture-wrapper">
-      <div class="post-capture" *ngIf="post">
+      <!-- <div class="post-capture" *ngIf="post">
         <label>Post ID: </label> {{ post.id }}
         <input class="post-detail" [(ngModel)]="post.userId" />
         <input class="post-detail" [(ngModel)]="post.title" />
         <input class="post-detail" [(ngModel)]="post.body" />
-      </div>
-      <button (click)="addPost(post)">
-        {{ addNew ? "Add" : "Update" }}
-      </button>
+      </div> -->
+
+      <form #postForm="ngForm">
+        <div class="post-capture" *ngIf="post">
+          <label>Post ID: </label> {{ post.id }}
+          <div>
+            <label for="userId">User ID </label>
+            <input
+              id="userId"
+              name="userId"
+              #userId="ngModel"
+              class="post-detail"
+              [(ngModel)]="post.userId"
+              required
+            />
+          </div>
+
+          <input class="post-detail" [(ngModel)]="post.title" />
+          <input class="post-detail" [(ngModel)]="post.body" />
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="postForm.invalid"
+          (click)="addPost(post)"
+        >
+          {{ addNew ? "Add" : "Update" }}
+        </button>
+      </form>
     </div>
     <div class="post">
       <div class="title">
@@ -89,5 +114,4 @@ export class AddNewPostComponent implements OnInit {
       this.facadeService.addPost(post);
     }
   }
-
 }
