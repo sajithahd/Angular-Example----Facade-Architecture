@@ -85,7 +85,10 @@ import { Post } from "./models/post";
 
       <!-- Reactive Form with validations -->
       <form [formGroup]="postForm">
-        <div></div>
+        <div>
+          <label for="userId">User ID</label>
+          <input required formControlName="userId">
+        </div>
         <div></div>
         <div></div>
       </form>
