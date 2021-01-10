@@ -193,6 +193,7 @@ export class AddNewPostComponent implements OnInit {
     //   body: new FormControl(this.post.body, [Validators.required])
     // });
 
+
     //FormBuilder based intialzing
     this.postForm = formbuilder.group({
       userId: [this.post.userId, Validators.required],
