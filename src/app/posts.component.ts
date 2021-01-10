@@ -6,7 +6,7 @@ import { Post } from "./models/post";
 @Component({
   selector: "posts",
   template: `
-    <div class="post" *ngFor="let post of posts">
+    <div class="post" *ngFor="let post of posts$ | async">
       <div class="title">
         {{ post.id }}. {{ post.title }} by user {{ post.userId }}
       </div>
@@ -41,14 +41,14 @@ export class PostsComponent implements OnInit {
 
   ngOnInit(): void {
     this.posts$ = this.facadeService.getPosts$();
-    this.posts$.subscribe(
-      posts => {
-        this.posts = posts;
-      },
-      error => {
-        console.log("Error occured while fetching posts");
-      }
-    );
+    // this.posts$.subscribe(
+    //   posts => {
+    //     this.posts = posts;
+    //   },
+    //   error => {
+    //     console.log("Error occured while fetching posts");
+    //   }
+    // );
   }
 
   updatePost(post: Post): void {

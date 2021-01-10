@@ -61,6 +61,8 @@ export class FacadeService {
     this.apiService.updatePost(post).subscribe(
       (post: Post) => {
         this.setUpdatedPost(post);
+
+        // this.get
       },
       error => {
         console.log("Error occured while adding new post");
