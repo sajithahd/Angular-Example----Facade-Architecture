@@ -8,21 +8,14 @@ import { Post } from "./models/post";
     <div>Add new Post</div>
     <div class="post-capture-wrapper">
       <div class="post-capture" *ngIf="addNew ? addedPost.id : updatedPost.id">
-        <label>Post ID: </label> {{ addNew ? addedPost.id : updatedPost.id }}
-        <input
-          class="post-detail"
-          [(ngModel)]="addNew ? addedPost.userId : updatedPost.userId"
-        />
-        <input
-          class="post-detail"
-          [(ngModel)]="addNew ? addedPost.title : updatedPost.title"
-        />
-        <input
-          class="post-detail"
-          [(ngModel)]="addNew ? addedPost.body : updatedPost.body"
-        />
+        <label>Post ID: </label> {{ addedPost.id }}
+        <input class="post-detail" [(ngModel)]="addedPost.userId" />
+        <input class="post-detail" [(ngModel)]="addedPost.title" />
+        <input class="post-detail" [(ngModel)]="addedPost.body" />
       </div>
-      <button (click)="addPost(addNew ? addedPost : updatedPost)">{{ addNew ? "Add" : "Update" }}</button>
+      <button (click)="addPost(addedPost)">
+        {{ addNew ? "Add" : "Update" }}
+      </button>
     </div>
     <div class="post">
       <div class="title">
@@ -68,7 +61,7 @@ export class AddNewPostComponent implements OnInit {
 
     facadeService.addPost(this.addedPost);
   }
-  
+
   ngOnInit(): void {
     this.facadeService.getAddedPost$().subscribe(
       addedPost => {
@@ -87,7 +80,7 @@ export class AddNewPostComponent implements OnInit {
     );
   }
 
-  addPost(post: Post){
+  addPost(post: Post) {
     this.facadeService.addPost(post);
   }
 }
