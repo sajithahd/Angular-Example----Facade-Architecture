@@ -7,6 +7,7 @@ import { Post } from "./models/post";
   template: `
     <div>Add new Post</div>
     <div class="post-capture-wrapper">
+      <!-- Simple Form -->
       <!-- <div class="post-capture" *ngIf="post">
         <label>Post ID: </label> {{ post.id }}
         <input class="post-detail" [(ngModel)]="post.userId" />
@@ -14,7 +15,8 @@ import { Post } from "./models/post";
         <input class="post-detail" [(ngModel)]="post.body" />
       </div> -->
 
-      <form #postForm="ngForm">
+      <!-- Dynamic Form with validations -->
+      <!-- <form #postForm="ngForm">
         <div class="post-capture" *ngIf="post">
           <label>Post ID: </label> {{ post.id }}
           <div>
@@ -78,7 +80,10 @@ import { Post } from "./models/post";
         >
           {{ addNew ? "Add" : "Update" }}
         </button>
-      </form>
+      </form> -->
+
+      <!-- Reactive Form with validations -->
+      
     </div>
     <div class="post">
       <div class="title">
