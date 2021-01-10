@@ -122,7 +122,13 @@ import { Post } from "./models/post";
           </div>
         </div>
 
-        <button type="submit" [disabled]="postForm.invalid">Add</button>
+        <button
+          type="submit"
+          [disabled]="postForm.invalid"
+          (click)="addPost(postForm.value)"
+        >
+          Add
+        </button>
       </form>
     </div>
     <div class="post">
