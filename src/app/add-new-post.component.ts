@@ -7,7 +7,7 @@ import { Post } from "./models/post";
   template: `
     <div>Add new Post</div>
     <div class="post-capture-wrapper">
-      <div class="post-capture" *ngIf="addNew ? addedPost : updatedPost">
+      <div class="post-capture" *ngIf="addNew ? addedPost.id : updatedPost.id">
         <label>Post ID: </label> {{ addNew ? addedPost.id : updatedPost.id }}
         <input
           class="post-detail"
@@ -37,7 +37,6 @@ import { Post } from "./models/post";
         margin: 10px 0px;
         background: #eee;
         padding: 5px;
-
       }
       .post {
         padding: 5px;
@@ -58,6 +57,7 @@ export class AddNewPostComponent implements OnInit {
 
   constructor(private facadeService: FacadeService) {
     this.addNew = true;
+    this.addedPost = new Post();
 
     // let post: Post = {
     //   userId: 1,
