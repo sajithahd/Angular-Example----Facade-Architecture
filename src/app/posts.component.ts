@@ -9,6 +9,9 @@ import { Post } from "./models/post";
     <div class="post" *ngFor="let post of posts">
       <div class="title">
         {{ post.id }}. {{ post.title }} by user {{ post.userId }}
+        <div>
+          <button (click)="updatePost()">Update</button>
+        </div>
       </div>
       {{ post.body }}
     </div>
@@ -46,5 +49,9 @@ export class PostsComponent implements OnInit {
         console.log("Error occured while fetching posts");
       }
     );
+  }
+
+  updatePost(post: Post): void {
+    this.facadeService.updatePost(post);
   }
 }
