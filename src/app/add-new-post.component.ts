@@ -22,7 +22,7 @@ import { Post } from "./models/post";
           [(ngModel)]="addNew ? addedPost.body : updatedPost.body"
         />
       </div>
-      <button>{{ addNew ? "Add" : "Update" }}</button>
+      <button (click)="addPost(addNew ? addedPost : updatedPost)">{{ addNew ? "Add" : "Update" }}</button>
     </div>
     <div class="post">
       <div class="title">
@@ -68,7 +68,7 @@ export class AddNewPostComponent implements OnInit {
 
     facadeService.addPost(this.addedPost);
   }
-
+  
   ngOnInit(): void {
     this.facadeService.getAddedPost$().subscribe(
       addedPost => {
@@ -85,5 +85,9 @@ export class AddNewPostComponent implements OnInit {
       },
       error => {}
     );
+  }
+
+  addPost(post: Post){
+    this.facadeService.addPost(post);
   }
 }
