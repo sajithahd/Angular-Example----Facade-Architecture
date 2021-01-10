@@ -87,10 +87,12 @@ import { Post } from "./models/post";
       <form [formGroup]="postForm">
         <div>
           <label for="userId">User ID</label>
-          <input required formControlName="userId" />
+          <input  class="post-detail" id="userId" formControlName="userId" />
         </div>
         <div></div>
         <div></div>
+
+        <button type="submit" [disabled]="postForm.invalid">Add</button>
       </form>
     </div>
     <div class="post">
