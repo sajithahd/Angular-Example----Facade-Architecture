@@ -6,23 +6,24 @@ import { Post } from "./models/post";
   selector: "add-new-post",
   template: `
     <div>Add new Post</div>
-    <br />
-    <div class="post-capture">
-      <label>Post ID: </label> {{ addNew ? addedPost.id : updatedPost.id }}
-      <input
-        class="post-detail"
-        [(ngModel)]="addNew ? addedPost.userId : updatedPost.userId"
-      />
-      <input
-        class="post-detail"
-        [(ngModel)]="addNew ? addedPost.title : updatedPost.title"
-      />
-      <input
-        class="post-detail"
-        [(ngModel)]="addNew ? addedPost.body : updatedPost.body"
-      />
+    <div class="post-capture-wrapper">
+      <div class="post-capture">
+        <label>Post ID: </label> {{ addNew ? addedPost.id : updatedPost.id }}
+        <input
+          class="post-detail"
+          [(ngModel)]="addNew ? addedPost.userId : updatedPost.userId"
+        />
+        <input
+          class="post-detail"
+          [(ngModel)]="addNew ? addedPost.title : updatedPost.title"
+        />
+        <input
+          class="post-detail"
+          [(ngModel)]="addNew ? addedPost.body : updatedPost.body"
+        />
+      </div>
+      <button>{{ addNew ? "Add" : "Update" }}</button>
     </div>
-
     <div class="post">
       <div class="title">
         {{ addedPost.id }}. {{ addedPost.title }} by user {{ addedPost.userId }}
@@ -32,6 +33,12 @@ import { Post } from "./models/post";
   `,
   styles: [
     `
+      .post-capture-wrapper {
+        margin: 10px 0px;
+        background: #eee;
+        padding: 5px;
+
+      }
       .post {
         padding: 5px;
         background: #ddd;
@@ -44,7 +51,6 @@ import { Post } from "./models/post";
     `
   ]
 })
-
 export class AddNewPostComponent implements OnInit {
   addNew: boolean;
   addedPost: Post;
