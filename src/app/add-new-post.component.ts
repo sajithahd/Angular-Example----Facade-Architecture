@@ -99,11 +99,28 @@ import { Post } from "./models/post";
         </div>
         <div>
           <label for="title">Title</label>
-          <input class="post-detail" formControlName="title" id="title
-          name="title">
-          <div *ngIf="title.invalid"></div>
+          <input
+            class="post-detail"
+            formControlName="title"
+            id="title"
+            name="title"
+          />
+          <div *ngIf="title.invalid && (title.touched || title.dirty)">
+            <div *ngIf="title.errors.required">Required Filed</div>
+          </div>
         </div>
-        <div></div>
+        <div>
+          <label for="body">Body</label>
+          <input
+            formControlName="body"
+            class="post-detail"
+            id="Body"
+            name="body"
+          />
+          <div *ngIf="body.invalid && (title.touched || title.dirty)">
+            <div *ngIf="body.errors.required">Required Filed</div>
+          </div>
+        </div>
 
         <button type="submit" [disabled]="postForm.invalid">Add</button>
       </form>
