@@ -7,7 +7,7 @@ import { Post } from "./models/post";
   template: `
     <div>Add new Post</div>
     <div class="post-capture-wrapper">
-      <div class="post-capture" *ngIf="addNew ? addedPost.id : updatedPost.id">
+      <div class="post-capture" *ngIf="addedPost">
         <label>Post ID: </label> {{ addedPost.id }}
         <input class="post-detail" [(ngModel)]="addedPost.userId" />
         <input class="post-detail" [(ngModel)]="addedPost.title" />
@@ -66,7 +66,7 @@ export class AddNewPostComponent implements OnInit {
     this.facadeService.getAddedPost$().subscribe(
       addedPost => {
         this.addNew = true;
-        //this.addedPost = addedPost;
+        this.addedPost = addedPost;
       },
       error => {}
     );
