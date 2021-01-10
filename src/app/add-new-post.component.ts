@@ -26,7 +26,12 @@ import { Post } from "./models/post";
               class="post-detail"
               [(ngModel)]="post.userId"
               required
+              minlength="4"
             />
+            <div  *ngIf="userId.touched && (userId.touched || userId.dirty)">
+              <span *ngIf="userId.errors.required && userId.invalid">Reured field</span>
+              <span *ngIf="userId.errors.minlength && userId.invalid">Min length</span>
+            </div>
           </div>
 
           <input class="post-detail" [(ngModel)]="post.title" />
