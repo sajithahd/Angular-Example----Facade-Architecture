@@ -193,7 +193,6 @@ export class AddNewPostComponent implements OnInit {
     //   body: new FormControl(this.post.body, [Validators.required])
     // });
 
-
     //FormBuilder based intialzing
     this.postForm = formbuilder.group({
       userId: [this.post.userId, Validators.required],
@@ -215,6 +214,13 @@ export class AddNewPostComponent implements OnInit {
       updatedPost => {
         this.addNew = false;
         this.post = updatedPost;
+
+        //FormBuilder based intialzing
+        this.postForm = this.formbuilder.group({
+          userId: [this.post.userId, Validators.required],
+          title: [this.post.title, Validators.required],
+          body: [this.post.body, Validators.required]
+        });
       },
       error => {}
     );
